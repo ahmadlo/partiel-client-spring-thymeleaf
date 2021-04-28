@@ -1,0 +1,90 @@
+	<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+<title>Default Page</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<!-- header -->
+	<div th:insert="header"></div>
+
+	<!-- Navigation-->
+	<div th:insert="menuhaut"></div>
+
+	
+		<!-- Masthead-->
+		
+		<!-- Content -->
+
+   <div class="container">
+ 		
+ 		<div class="">
+ 		
+ 		<h1>Créer un étudiant</h1>
+	
+			<div class="pt-4 pb-3">
+	
+				<form action="storeStudent" method="post" modelAttribute="student">
+	
+					<div class="form-row">
+					
+						<div class="col">
+							<div class="md-form md-outline mt-0">
+								<label for="firstName">Prénom</label>
+								<input type="text" id="firstName" name="firstName" class="form-control"> 
+							</div>
+						</div>
+						
+						<div class="col">
+							<div class="md-form md-outline mt-0">
+								<label for="lastName">Nom </label>
+								<input type="text" id="lastName" name="lastName" class="form-control"> 
+							</div>
+						</div>
+						
+					</div>
+	
+					<div class="md-form md-outline mt-0">				
+						<label for="mailAddress">Adresse mail</label>
+						<input type="text" id="mail" class="form-control" name="mail"> 
+					</div>
+					
+					
+					<div class="md-form md-outline">	
+						<label for="address">Adresse</label>
+						<textarea  id="address" class="form-control" name="address"></textarea>
+					</div>
+					
+					<div class="md-form md-outline mt-0"  type ="hidden;">
+						<label for="numberPhone">Numéro de téléphone</label>
+						<input type="text" id="phone" name="phone" class="form-control">
+					</div>				
+					
+					<div class="md-form md-outline mt-0">
+						<label for="birthDate">Date de naissance (format yyyy-mm-dd)</label>
+						<input type="date" id="dob" name="dob" class="form-control">
+					</div>
+				
+									
+					<br/> <br/>
+					<div class="text-center mb-2">
+						<button type="submit" class="btn btn-primary mb-4">Ajouter</button>
+					</div>
+	
+				</form>
+	
+	
+	
+			</div>
+
+		</div>
+ 		
+ 	</div>
+		
+		
+		<!-- footer -->
+	<div th:insert="footer"></div>
+</body>
+</html>

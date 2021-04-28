@@ -1,0 +1,83 @@
+	<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+<title>Default Page</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link th:href="@{/css/styles.css}" rel="stylesheet" />
+</head>
+<title>Default Page</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<!-- header -->
+<!-- 	<div th:insert="header"></div> -->
+
+	<!-- Navigation-->
+	<div th:insert="menuhaut"></div>
+
+	<!-- Masthead-->
+	<section class="page-section home" id="home">
+		<!-- Content -->
+
+		<div class="container ">
+		<br /> <br /> <br /> <br /> <br /> <br />
+
+
+		<!-- Masthead Heading-->
+		<h1>Les informations de l'étudiant</h1>
+
+
+		<div class="row">
+			<div class="col-8">
+				<div class="card">
+					<div class="form-row">
+						<div style="padding: 20px" class="col-6">
+							 <label style="font-weight: bold"> <i
+								style="color: #1ABC9C" class="fas fa-user-circle"></i> Prénom
+							</label><br th:utext="${student.getFirstName()}">  <br />
+							<br /> <label style="font-weight: bold"> <i
+								style="color: #1ABC9C" class="fas fa-home"></i> Adresse
+							</label><br th:utext="${student.getAddress()}"> <br />
+							<br /> <label style="font-weight: bold"> <i
+								style="color: #1ABC9C" class="fas fa-at"></i> E-mail
+							</label><br th:utext="${student.getMail()}"> 
+						</div>
+						<div style="padding: 20px" class="col-6">
+							<label style="font-weight: bold"> <i
+								style="color: #1ABC9C" class="fas fa-user-circle"></i> Nom
+							</label><br th:utext="${student.getLastName()}">  <br />
+							<br /> <label style="font-weight: bold"> <i
+								style="color: #1ABC9C" class="fas fa-phone-alt"></i> Téléphone
+							</label><br th:utext="${student.getPhone()}" >  <br />
+							<br /> <label style="font-weight: bold"> <i
+								style="color: #1ABC9C" class="fas fa-birthday-cake"></i> Date de
+								naissance
+							</label><br th:utext="${student.getDob()}"> 
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!--Section: Live preview-->
+
+	</div>
+
+
+</section>
+
+	<!-- footer -->
+	<div th:insert="footer"></div>
+</body>
+</html>
