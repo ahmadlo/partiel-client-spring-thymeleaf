@@ -14,11 +14,11 @@ public class User extends Personne{
 		super();
 	}
 
-	public User(String firstName, String lastName, String mail, String address, String phone, String dob) {
+	public User(String firstName, String lastName, String mail, String address, String phone, Date dob) {
 		super(firstName, lastName, mail, address, phone, dob);
 	}
 
-	public User(String firstName, String lastName, String mail, String address, String phone, String dob,
+	public User(String firstName, String lastName, String mail, String address, String phone, Date dob,
 			String login, String password, String profil) {
 		super(firstName, lastName, mail, address, phone, dob);
 		this.login = login;

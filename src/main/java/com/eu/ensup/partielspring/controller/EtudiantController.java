@@ -47,6 +47,7 @@ public class EtudiantController {
 	
 	@PostMapping("/storeStudent")
 	public String storeStudent(@Validated @ModelAttribute("student")Student student, Model model) {
+		System.out.println(student);
 		studentService.createStudent(student);
 		model.addAttribute("studentList", studentService.getListStudent());
 		model.addAttribute("message", "Etudiant ajouté avec succès");
@@ -61,6 +62,7 @@ public class EtudiantController {
 	
 	@PostMapping("/editStudent/{id}")
 	public RedirectView editStudent(@PathVariable(name = "id") Long id, @Validated @ModelAttribute("student")Student student, Model model) {
+		System.out.println("Etudiant à modifier : " + student);
 		studentService.updateStudent(id, student);
 		model.addAttribute("message", "Etudiant modifié avec succès");
 		model.addAttribute("studentList", studentService.getListStudent());

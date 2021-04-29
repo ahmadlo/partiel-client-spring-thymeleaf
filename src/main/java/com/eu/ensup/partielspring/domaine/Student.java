@@ -7,11 +7,11 @@ public class Student extends Personne {
 	private Course courses;
 	
 
-	public Student(String firstName, String lastName, String mail, String address, String phone, String dob) {
+	public Student(String firstName, String lastName, String mail, String address, String phone, Date dob) {
 		super(firstName, lastName, mail, address, phone, dob);
 	}
 
-	public Student(String firstName, String lastName, String mail, String address, String phone, String dob, Course courses) {
+	public Student(String firstName, String lastName, String mail, String address, String phone, Date dob, Course courses) {
 		super(firstName, lastName, mail, address, phone, dob);
 		this.courses = courses;
 	}
