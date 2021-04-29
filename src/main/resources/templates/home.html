@@ -3,14 +3,12 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.thymeleaf.org ">
-<head>
-<title>Default Page</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	
+<!-- header -->
+<head th:replace="header">
+<title id="pageTitle">Accueil</title>
 </head>
 <body>
-	<!-- header -->
-	<div th:insert="header"></div>
-
 	<!-- Navigation-->
 	<div th:insert="menuhaut"></div>
 
@@ -18,7 +16,7 @@
 	<div th:insert="acceuil"></div>
 
 	<!-- footer -->
-	<div th:insert="footer"></div>
+	<footer th:replace="footer"></footer>
 </body>
 </html>
 

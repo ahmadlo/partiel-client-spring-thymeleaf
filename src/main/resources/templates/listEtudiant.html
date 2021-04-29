@@ -1,75 +1,87 @@
-	<!DOCTYPE HTML>
+
+<!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.thymeleaf.org ">
-<head>
-<title>Liste Ã©tudiants</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
- <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link th:href="@{/css/styles.css}" rel="stylesheet" />
+<head th:replace="header">
+<title id="pageTitle">Liste étudiants</title>
 </head>
 <body>
 	<!-- header -->
-<!-- 	<div th:insert="header"></div> -->
+	<!-- 	<div th:insert="header"></div> -->
 
 	<!-- Navigation-->
 	<div th:insert="menuhaut"></div>
 
-	
-		<!-- Masthead-->
-		 <!-- Masthead-->
-		<section class="page-section home" id="home">
+
+	<!-- Masthead-->
+	<!-- Masthead-->
+	<section class="page-section home" id="home">
 		<!-- Content -->
 
-    <div class="container d-flex align-items-center flex-column">
-      <div class="alert alert-success" role="alert" th:if= "${message != null}"  th:utext="${message}">
-         
+		<div class="container d-flex align-items-center flex-column">
+			<div class="alert alert-success" role="alert"
+				th:if="${message != null}" th:utext="${message}"></div>
+			<br>
+			<h1>Liste des étudiants</h1>
+			<p style="width: 100%; text-align: left">
+				<a class="btn btn-success" th:href="@{/etudiant/ajout}"> <i
+					class="fas fa-user-plus"></i> <span>&nbsp;&nbsp;&nbsp;Ajouter
+						un étudiant</span>
+				</a>
+			</p>
 
+			<form style="width:100%" th:action="@{/etudiant/search}" method="post">
+				<div class="form-group row">
+					<div class="col-sm-3 col-form-label">
+						<label class="sr-only" for="searchText">Recherche</label> <input
+							type="text" id="searchText" name="searchText"
+							class="form-control" placeholder="Recherche">
+					</div>
+					<div class="input-group-prepend col-sm-3">
+						<button type="submit" class="btn btn-primary mb-1">
+							<i style="color: white" class="fas fa-search"></i> Rechercher
+						</button>
+					</div>
 				</div>
-				
-    	<h1>Liste des Ã©tudiants</h1>
-    	<table class="table">
-	        <thead>
-	            <tr>
-	                <th>PrÃ©nom</th>
-	                <th>Nom</th>
-	                <th>Adresse mail</th>
-	                <th>Actions</th>
-	            </tr>
-	        </thead>
-	        <tbody>
-	            <tr th:each="student : ${studentList}">
-	                <td th:text="${student.firstName}"></td>
-	                <td th:text="${student.lastName}"></td>
-	                <td th:text="${student.mail}"></td>
-	                <td> 
-	                
-								<a class="btn btn-success" th:href="@{/etudiant/updateStudent/{id}(id=${student.id})}"> <i class="fas fa-user-edit"></i> </a>				
-								
-								<a class="btn btn-danger" th:href="@{/etudiant/deleteStudent/{id}(id=${student.id})}" > <i class="fas fa-trash"></i> </a>
-								
-								<a class="btn btn-info" th:href="@{/etudiant/viewStudent/{id}(id=${student.id})}" > <i class="fas fa-eye"></i> </a>
-								
-								<!--  <a class  href="EtudiantCoursServlet?id=<%=student.getId()%>" style="color:blue">Cours</a> -->
-								
-	                
-	                </td>
-	            </tr>
-	        </tbody>
-	    </table>
-    	
-    </div>
-		
-		
-		 </section>
-		<!-- footer -->
+			</form>
+			
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Prénom</th>
+						<th>Nom</th>
+						<th>Adresse mail</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="student : ${studentList}">
+						<td th:text="${student.firstName}"></td>
+						<td th:text="${student.lastName}"></td>
+						<td th:text="${student.mail}"></td>
+						<td><a class="btn btn-success"
+							th:href="@{/etudiant/updateStudent/{id}(id=${student.id})}">
+								<i class="fas fa-user-edit"></i>
+						</a> <a class="btn btn-danger"
+							th:href="@{/etudiant/deleteStudent/{id}(id=${student.id})}">
+								<i class="fas fa-trash"></i>
+						</a> <a class="btn btn-info"
+							th:href="@{/etudiant/viewStudent/{id}(id=${student.id})}"> <i
+								class="fas fa-eye"></i>
+						</a> <!--  <a class  href="EtudiantCoursServlet?id=<%=student.getId()%>" style="color:blue">Cours</a> -->
+
+
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+		</div>
+
+
+	</section>
+	<!-- footer -->
 	<div th:insert="footer"></div>
 </body>
 </html>

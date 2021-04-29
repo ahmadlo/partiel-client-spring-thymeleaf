@@ -1,24 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page import="java.util.Date" %>
-
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>ENSUP</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
-        <!-- Font Awesome icons (free version)-->
-        <script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
-        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+    <head th:replace="header">
+        <title id="pageTitle">ENSUP</title>
     </head>
     <body id="page-top">
         <!-- Navigation-->
@@ -47,7 +30,7 @@
             
            
                 <!-- Contact Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Authentificationg</h2>
+                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Authentification</h2>
                 <!-- Icon Divider-->
                 <div class="divider-custom">
                     <div class="divider-custom-line"></div>
@@ -64,7 +47,7 @@
 							<div class="control-group">
                                 
                                 <div class="form-group floating-label-form-group controls mb-0 pb-2">
-                                    <label>Identifiantttr</label>
+                                    <label>Identifiant</label>
                                     <input class="form-control" name="login" id="login" type="text" placeholder="Identifiant" required="required" data-validation-required-message="Please enter your login." />
                                     <p class="help-block text-danger"></p>
                                 </div>
@@ -84,7 +67,7 @@
                             
                             <br />
                             <div id="success"></div>
-                            <div class="form-group"><button class="btn btn-primary btn-xl" id="sendMessageButton" type="submit">Connexion</button></div>
+                            <div class="form-group"><button class="btn btn-primary btn-xl" id="sendMessageButton" type="submit">Se connecter</button></div>
                         </form>
                     </div>
                 </div>
@@ -100,7 +83,7 @@
                         <p class="lead mb-0">
                             36 rue du Guyancourt
                             <br />
-                             Ensup l'ï¿½cole, BP 78210
+                             Ecole Ensup, BP 78210
                         </p>
                     </div>
                     <!-- Footer Social Icons-->
@@ -113,7 +96,7 @@
                     </div>
                     <!-- Footer About Text-->
                     <div class="col-lg-4">
-                        <h4 class="text-uppercase mb-4">A propos</h4>
+                        <h4 class="text-uppercase mb-4">À propos</h4>
                         <p class="lead mb-0">
                             Groupe 2
                         </p>
@@ -123,7 +106,7 @@
         </footer>
         <!-- Copyright Section-->
         <div class="copyright py-4 text-center text-white">
-            <div class="container"><small>Copyright ï¿½ ENSUP 2021</small></div>
+            <div class="container"><small>Copyright &copy; ENSUP 2021</small></div>
         </div>
         <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes)-->
         <div class="scroll-to-top d-lg-none position-fixed">
