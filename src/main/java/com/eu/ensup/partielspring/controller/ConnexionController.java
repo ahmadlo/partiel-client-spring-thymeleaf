@@ -100,4 +100,10 @@ public class ConnexionController {
 		
 		return reponse;
 	}
+	
+	@GetMapping("/disconnect")
+	public String disconnect(HttpSession session) {
+		session.removeAttribute("user");
+		return "login";
+	}
 }

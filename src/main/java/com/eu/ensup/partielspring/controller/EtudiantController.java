@@ -92,9 +92,9 @@ public class EtudiantController {
 		
 		List<Student> students = studentService.getListStudent()
 				.stream()
-				.filter(s -> s.getFirstName().contains(searchText)
-						|| s.getLastName().contains(searchText)
-						|| s.getMail().contains(searchText))
+				.filter(s -> s.getFirstName().toLowerCase().contains(searchText.toLowerCase())
+						|| s.getLastName().toLowerCase().contains(searchText.toLowerCase())
+						|| s.getMail().toLowerCase().contains(searchText.toLowerCase()))
 				.collect(Collectors.toList());
 		
 		if (students == null)
