@@ -65,19 +65,21 @@ public class CourseController {
 	}
 	
 	@PostMapping("/editCourse/{id}")
-	public RedirectView editCourse(@PathVariable(name = "id") Long id, @Validated @ModelAttribute("course")Course course, Model model) {
+	public String editCourse(@PathVariable(name = "id") Long id, @Validated @ModelAttribute("course")Course course, Model model) {
 		courseService.updateCours(id, course);
 		model.addAttribute("message", "Course modifié avec succès");
 		model.addAttribute("courseList", courseService.getAllCours());
-		return new RedirectView("/etudiant");
+		//return new RedirectView("/etudiant");
+		return "listCourse";
 	}
 	
 	@GetMapping("/deleteCourse/{id}")
-	public RedirectView deleteCourse(@PathVariable(name = "id") Long id, Model model) {
+	public String deleteCourse(@PathVariable(name = "id") Long id, Model model) {
 		courseService.deleteCours(id);
 		model.addAttribute("courseList", courseService.getAllCours());
 		model.addAttribute("message", "Course supprimé avec succès");
-		return new RedirectView("/etudiant");
+		//return new RedirectView("/etudiant");
+		return "listCourse";
 	}
 	
 	@GetMapping("/viewCourse/{id}")

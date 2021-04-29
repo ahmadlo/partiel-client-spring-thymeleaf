@@ -61,6 +61,14 @@ public class Course
 	public void setIdCourse(Long idCourse) {
 		this.idCourse = idCourse;
 	}
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public String getThemeCourse()
 	{
@@ -91,11 +99,13 @@ public class Course
 		this.students = students;
 	}
 
+	
 	@Override
-	public String toString()
-	{
-		return "Course [themeCourse=" + themeCourse + ", numberHours=" + numberHours + "]";
+	public String toString() {
+		return "Course [id=" + id + ", idCourse=" + idCourse + ", themeCourse=" + themeCourse + ", numberHours="
+				+ numberHours + ", students=" + students + "]";
 	}
+	
 	
 	
 }

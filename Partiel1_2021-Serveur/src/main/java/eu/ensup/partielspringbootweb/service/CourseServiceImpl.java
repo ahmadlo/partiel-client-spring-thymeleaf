@@ -38,6 +38,7 @@ public class CourseServiceImpl  implements ICourseService{
 	 */
 	@Override
 	public List<Course> getAllCourses() {
+		//System.out.println(" courses : "+courseRepo.findAll());
 		return (List<Course>) courseRepo.findAll();
 	}
 
