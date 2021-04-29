@@ -1,4 +1,5 @@
-	<!DOCTYPE HTML>
+
+<!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.thymeleaf.org ">
@@ -12,64 +13,64 @@
 	<!-- Navigation-->
 	<div th:insert="menuhaut"></div>
 
-	
-		<!-- Masthead-->
-		
-		<!-- Content -->
 
-  	
-		
+	<!-- Masthead-->
+
+	<!-- Content -->
+
+
+
+	<section class="page-section home" id="home">
+	
 		<div class="container">
-	<br /> <br /> <br /> <br /> <br /> <br />
+			<br>
+			<!-- Masthead Heading-->
+			<h1>Ajouter un cours</h1>
 
-	
+			<div class="">
 
-	<!-- Masthead Heading-->
-	<h1>Ajouter un cours</h1>
-	
-	
-	<div class="">
-	
-		<div class="pt-4 pb-3">
+				<div class="pt-4 pb-3">
 
-			<form action="storeCourse" method="post" modelAttribute="course">
+					<form action="storeCourse" method="post" modelAttribute="course">
 
-				<div class="form-row">
-				
-					<div class="col">
-						<div class="md-form md-outline mt-0">
-							<label for="firstName">Libellé cours</label>
-							<input type="text" id="themeCourse" name="themeCourse" class="form-control"> 
+						<div class="form-row">
+
+							<div class="col">
+								<div class="md-form md-outline mt-0">
+									<label for="firstName">Libellé cours</label> <input type="text"
+										id="themeCourse" name="themeCourse" class="form-control">
+								</div>
+							</div>
+
+							<div class="col">
+								<div class="md-form md-outline mt-0">
+									<label for="lastName">Nombre d'heures</label> <input
+										type="number" id="numberHours" name="numberHours"
+										class="form-control">
+								</div>
+							</div>
+
 						</div>
-					</div>
-					
-					<div class="col">
-						<div class="md-form md-outline mt-0">
-							<label for="lastName">Nombre d'heures</label>
-							<input type="number" id="numberHours" name="numberHours" class="form-control"> 
+
+						<br /> <br />
+						<div class="text-center mb-2">
+							<button type="submit" class="btn btn-primary mb-4">Valider</button>
 						</div>
-					</div>
-					
-				</div>
-				
-				<br/> <br/>
-				<div class="text-center mb-2">
-					<button type="submit" class="btn btn-primary mb-4">Valider</button>
+
+					</form>
+
+
+
 				</div>
 
-			</form>
-
-
+			</div>
+			<!-- Card -->
 
 		</div>
+	</section>
+	<!-- Fin ajout etudiant -->
 
-	</div>
-	<!-- Card -->
-
-</div>
-<!-- Fin ajout etudiant -->
-		
-		<!-- footer -->
+	<!-- footer -->
 	<div th:insert="footer"></div>
 </body>
 </html>
