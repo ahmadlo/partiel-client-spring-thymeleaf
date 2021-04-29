@@ -1,0 +1,76 @@
+	<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.thymeleaf.org ">
+<head>
+<title>Default Page</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<!-- header -->
+	<div th:insert="header"></div>
+
+	<!-- Navigation-->
+	<div th:insert="menuhaut"></div>
+
+	
+		<!-- Masthead-->
+		
+		<!-- Content -->
+
+  	
+		
+		<div class="container">
+	<br /> <br /> <br /> <br /> <br /> <br />
+
+	
+
+	<!-- Masthead Heading-->
+	<h1>Ajouter un cours</h1>
+	
+	
+	<div class="">
+	
+		<div class="pt-4 pb-3">
+
+			<form action="storeCourse" method="post" modelAttribute="course">
+
+				<div class="form-row">
+				
+					<div class="col">
+						<div class="md-form md-outline mt-0">
+							<label for="firstName">Libellé cours</label>
+							<input type="text" id="themeCourse" name="themeCourse" class="form-control"> 
+						</div>
+					</div>
+					
+					<div class="col">
+						<div class="md-form md-outline mt-0">
+							<label for="lastName">Nombre d'heures</label>
+							<input type="number" id="numberHours" name="numberHours" class="form-control"> 
+						</div>
+					</div>
+					
+				</div>
+				
+				<br/> <br/>
+				<div class="text-center mb-2">
+					<button type="submit" class="btn btn-primary mb-4">Valider</button>
+				</div>
+
+			</form>
+
+
+
+		</div>
+
+	</div>
+	<!-- Card -->
+
+</div>
+<!-- Fin ajout etudiant -->
+		
+		<!-- footer -->
+	<div th:insert="footer"></div>
+</body>
+</html>

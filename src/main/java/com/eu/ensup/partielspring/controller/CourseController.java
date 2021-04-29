@@ -44,12 +44,14 @@ public class CourseController {
 		return "listCourse";
 	}
 	
+	@GetMapping("/ajout")
 	public String addCourse() {
 		return "createCourse";
 	}
 	
 	@PostMapping("/storeCourse")
-	public String storeCourse(@Validated @ModelAttribute("student")Course course, Model model) {
+	public String storeCourse(@Validated @ModelAttribute("course")Course course, Model model) {
+		course.setIdCourse((long) 0);;
 		courseService.createCours(course);
 		model.addAttribute("courseList", courseService.getAllCours());
 		model.addAttribute("message", "Course ajouté avec succès");
