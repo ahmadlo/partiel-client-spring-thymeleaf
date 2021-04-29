@@ -6,6 +6,7 @@ import java.util.Set;
 
 public class Course {
 	
+	private Long id;
 	private Long idCourse;
 	private String themeCourse;
 	private int numberHours;
@@ -15,10 +16,11 @@ public class Course {
 		super();
 	}
 
-	public Course(String themeCourse, int numberHours) {
+	public Course(String themeCourse, int numberHours, Long id) {
 		super();
 		this.themeCourse = themeCourse;
 		this.numberHours = numberHours;
+		this.id=id;
 	}
 
 
@@ -52,6 +54,20 @@ public class Course {
 
 	public void setStudents(Set<Student> students) {
 		this.students = students;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		return "Course [id=" + id + ", idCourse=" + idCourse + ", themeCourse=" + themeCourse + ", numberHours="
+				+ numberHours + ", students=" + students + "]";
 	}
 	
 	

@@ -6,6 +6,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 public class Personne {
 	
+	@Override
+	public String toString() {
+		return "Personne [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", mail=" + mail
+				+ ", address=" + address + ", phone=" + phone + ", dob=" + dob + "]";
+	}
+
 	private Long id;
 	private String firstName;
 	private String lastName;
