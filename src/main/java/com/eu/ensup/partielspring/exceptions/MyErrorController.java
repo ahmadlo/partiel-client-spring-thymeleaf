@@ -1,4 +1,4 @@
-package com.eu.ensup.partielspring.controller;
+package com.eu.ensup.partielspring.exceptions;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;

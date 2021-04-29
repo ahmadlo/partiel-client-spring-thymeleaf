@@ -73,9 +73,9 @@ public class ModifEtudiantServlet extends HttpServlet {
 				student.setMail(request.getParameter("mailAdresse"));
 				student.setAddress(request.getParameter("adress"));
 				student.setPhone(request.getParameter("numberPhone"));
-				student.setDob(new SimpleDateFormat("dd-MM-yyyy").parse(request.getParameter("dateOfBirth")));
+				//student.setDob(new SimpleDateFormat("dd-MM-yyyy").parse(request.getParameter("dateOfBirth")));
 					
-		} catch (ParseException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

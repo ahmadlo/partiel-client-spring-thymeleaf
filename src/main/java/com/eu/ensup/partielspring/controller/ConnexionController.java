@@ -64,7 +64,7 @@ public class ConnexionController {
 	
 	
 	@PostMapping("/login")
-	public RedirectView authentification(@ModelAttribute(name="login") String login, @ModelAttribute(name="password") String password,Model model,HttpSession session) throws ServletException, IOException, NullPointerException {
+	public String authentification(@ModelAttribute(name="login") String login, @ModelAttribute(name="password") String password,Model model,HttpSession session) throws ServletException, IOException, NullPointerException {
 		
 	//	Httpmodel model = request.getmodel();
 		System.out.println("################# Login Authentification");
@@ -113,7 +113,7 @@ public class ConnexionController {
 		}
 		System.out.println(" Page to display : " +reponse);
 		
-		return new RedirectView(reponse);
-		//return reponse;
+		//return new RedirectView(reponse);
+		return reponse;
 	}
 }
