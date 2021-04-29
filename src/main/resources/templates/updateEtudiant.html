@@ -3,22 +3,8 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.thymeleaf.org ">
-<head>
-<title>Default Page</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<!-- Favicon-->
-<link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
-<!-- Font Awesome icons (free version)-->
-<script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js"
-	crossorigin="anonymous"></script>
-<!-- Google fonts-->
-<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
-	rel="stylesheet" type="text/css" />
-<link
-	href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic"
-	rel="stylesheet" type="text/css" />
-<!-- Core theme CSS (includes Bootstrap)-->
-<link th:href="@{/css/styles.css}" rel="stylesheet" />
+<head th:replace="header">
+<title id="pageTitle">Modifier étudiant</title>
 </head>
 <body>
 	<!-- header -->
@@ -36,7 +22,8 @@
 
 			<div class="">
 
-				<h1>Create student</h1>
+				<br>
+				<h1>Modifier un étudiant</h1>
 
 				<div class="pt-4 pb-3">
 
@@ -47,7 +34,7 @@
 
 							<div class="col">
 								<div class="md-form md-outline mt-0">
-									<label for="firstName">PrÃ©nom </label> <input type="text"
+									<label for="firstName">Prénom </label> <input type="text"
 										th:field="*{student.firstName}" id="firstName"
 										name="firstName" class="form-control">
 								</div>
@@ -77,15 +64,15 @@
 						</div>
 
 						<div class="md-form md-outline mt-0" type="hidden;">
-							<label for="numberPhone">NumÃ©ro de tÃ©lÃ©phone</label> <input
+							<label for="numberPhone">Numéro de téléphone</label> <input
 								type="text" th:field="*{student.phone}" id="phone" name="phone"
 								class="form-control">
 						</div>
 
 						<div class="md-form md-outline mt-0">
-							<label for="birthDate">Date de naissance (format
-								yyyy-mm-dd)</label> <input type="date" th:field="*{student.dob}"
-								id="dob" name="dob" class="form-control">
+							<label for="birthDate">Date de naissance</label> <input
+								type="date" th:field="*{student.dob}" id="dob" name="dob"
+								class="form-control">
 
 						</div>
 

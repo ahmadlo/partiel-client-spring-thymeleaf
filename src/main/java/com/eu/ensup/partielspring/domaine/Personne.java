@@ -2,6 +2,8 @@ package com.eu.ensup.partielspring.domaine;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class Personne {
 	
 	private Long id;
@@ -10,11 +12,11 @@ public class Personne {
 	private String mail;
 	private String address;
 	private String phone;
-	private String dob;
 	
-	
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date dob;
 
-	public Personne(String firstName, String lastName, String mail, String address, String phone, String dob) {
+	public Personne(String firstName, String lastName, String mail, String address, String phone, Date dob) {
 		super();
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -75,13 +77,11 @@ public class Personne {
 		this.phone = phone;
 	}
 
-	public String getDob() {
+	public Date getDob() {
 		return dob;
 	}
 
-	public void setDob(String dob) {
+	public void setDob(Date dob) {
 		this.dob = dob;
 	}
-	
-
 }

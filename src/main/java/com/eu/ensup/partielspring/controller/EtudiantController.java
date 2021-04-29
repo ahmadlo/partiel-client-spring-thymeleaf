@@ -1,5 +1,9 @@
 package com.eu.ensup.partielspring.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -47,6 +51,7 @@ public class EtudiantController {
 	
 	@PostMapping("/storeStudent")
 	public String storeStudent(@Validated @ModelAttribute("student")Student student, Model model) {
+		System.out.println(student);
 		studentService.createStudent(student);
 		model.addAttribute("studentList", studentService.getListStudent());
 		model.addAttribute("message", "Etudiant ajouté avec succès");
@@ -61,6 +66,7 @@ public class EtudiantController {
 	
 	@PostMapping("/editStudent/{id}")
 	public RedirectView editStudent(@PathVariable(name = "id") Long id, @Validated @ModelAttribute("student")Student student, Model model) {
+		System.out.println("Etudiant à modifier : " + student);
 		studentService.updateStudent(id, student);
 		model.addAttribute("message", "Etudiant modifié avec succès");
 		model.addAttribute("studentList", studentService.getListStudent());
@@ -81,4 +87,23 @@ public class EtudiantController {
 		return "viewEtudiant";
 	}
 
+	@PostMapping("/search")
+	public String authentification(@ModelAttribute(name="searchText") String searchText, Model model) {
+		if (searchText == null || searchText == "")
+			return "listEtudiant";
+		
+		List<Student> students = studentService.getListStudent()
+				.stream()
+				.filter(s -> s.getFirstName().contains(searchText)
+						|| s.getLastName().contains(searchText)
+						|| s.getMail().contains(searchText))
+				.collect(Collectors.toList());
+		
+		if (students == null)
+			students = new ArrayList<Student>();
+		
+		model.addAttribute("studentList", students);
+
+		return "listEtudiant";
+	}
 }

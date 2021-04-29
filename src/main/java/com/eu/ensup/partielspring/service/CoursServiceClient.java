@@ -11,11 +11,13 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.glassfish.jersey.client.ClientConfig;
+import org.springframework.stereotype.Service;
 
 import com.eu.ensup.partielspring.domaine.Course;
 import com.eu.ensup.partielspring.domaine.Student;
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 
+@Service
 public class CoursServiceClient implements ICoursServiceClient  {
 	
 	private static final String url = "http://localhost:8004/SpringMVC/servlet/course/";
