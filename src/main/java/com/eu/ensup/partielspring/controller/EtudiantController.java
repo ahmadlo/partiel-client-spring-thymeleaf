@@ -12,14 +12,12 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.eu.ensup.partielspring.domaine.Student;
 import com.eu.ensup.partielspring.service.IStudentServiceClient;
-import com.eu.ensup.partielspring.service.IUserServiceClient;
 import com.eu.ensup.partielspring.service.StudentServiceClient;
 
 @Controller
 @RequestMapping("/etudiant")
 public class EtudiantController {
 	private static final long serialVersionUID = 1L;
-	private IUserServiceClient userService;
 	private IStudentServiceClient studentService;
 
 	
