@@ -1,17 +1,18 @@
 package com.eu.ensup.partielspring.domaine;
 
 import java.util.Date;
+import java.util.List;
 
 public class Student extends Personne {
 	
-	private Course courses;
+	private List<Course> courses;
 	
 
 	public Student(String firstName, String lastName, String mail, String address, String phone, Date dob) {
 		super(firstName, lastName, mail, address, phone, dob);
 	}
 
-	public Student(String firstName, String lastName, String mail, String address, String phone, Date dob, Course courses) {
+	public Student(String firstName, String lastName, String mail, String address, String phone, Date dob, List<Course> courses) {
 		super(firstName, lastName, mail, address, phone, dob);
 		this.courses = courses;
 	}
@@ -20,11 +21,11 @@ public class Student extends Personne {
 		super();
 	}
 
-	public Course getCourses() {
+	public List<Course> getCourses() {
 		return courses;
 	}
 
-	public void setCourses(Course courses) {
+	public void setCourses(List<Course> courses) {
 		this.courses = courses;
 	}
 

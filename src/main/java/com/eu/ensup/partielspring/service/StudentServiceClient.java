@@ -11,12 +11,14 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import org.glassfish.jersey.client.ClientConfig;
+import org.springframework.stereotype.Service;
 
 import com.eu.ensup.partielspring.domaine.Student;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.jaxrs.json.JacksonJsonProvider;
 
+@Service
 public class StudentServiceClient implements IStudentServiceClient {
 
 	

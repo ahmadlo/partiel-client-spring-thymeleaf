@@ -51,5 +51,4 @@ public interface IStudentServiceClient {
 	 * @return
 	 */
 	Response updateStudent(Long id, Student etudiant);
-
 }

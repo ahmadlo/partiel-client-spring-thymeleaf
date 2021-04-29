@@ -8,12 +8,15 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
+import org.springframework.stereotype.Service;
+
 import com.eu.ensup.partielspring.domaine.User;
 import com.eu.ensup.partielspring.exceptions.UserNotFoundException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+@Service
 public class UserServiceClient implements IUserServiceClient  {
 	
 	
