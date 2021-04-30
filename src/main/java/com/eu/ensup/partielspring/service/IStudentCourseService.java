@@ -11,4 +11,12 @@ public interface IStudentCourseService
 	 * @return
 	 */
 	Response associateCourse(Long studentId, Long courseId);
+	
+	/**
+	 * Methode pour désassocier un cours à un étudiant
+	 * @param studentId
+	 * @param courseId
+	 * @return
+	 */
+	Response disassociateCourse(Long studentId, Long courseId);
 }

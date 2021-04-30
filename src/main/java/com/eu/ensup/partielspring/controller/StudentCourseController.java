@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.eu.ensup.partielspring.domaine.Course;
 import com.eu.ensup.partielspring.domaine.Student;
@@ -35,7 +36,7 @@ public class StudentCourseController
 	private ICoursServiceClient courseService;
 
 	@GetMapping("/associateCourse/{studentId}")
-	public String updateStudent(@PathVariable(name = "studentId") Long studentId, Model model)
+	public String associateCourse(@PathVariable(name = "studentId") Long studentId, Model model)
 	{
 		Student student = studentService.getStudentById(studentId);
 		
@@ -63,7 +64,7 @@ public class StudentCourseController
 	}
 
 	@PostMapping("/associateCourse")
-	public String editStudent(@ModelAttribute("studentId") Long studentId, @ModelAttribute("courseId") Long courseId,
+	public String associateCourse(@ModelAttribute("studentId") Long studentId, @ModelAttribute("courseId") Long courseId,
 			Model model)
 	{
 		System.out.println("Association étudiant à l'id \"" + studentId + "\" au cours à l'id \"" + courseId + "\"");
@@ -74,5 +75,19 @@ public class StudentCourseController
 		model.addAttribute("studentList", studentService.getListStudent());
 
 		return "listEtudiant";
+	}
+
+	@GetMapping("/disassociateCourse/{studentId}/{courseId}")
+	public RedirectView disassociateCourse(@PathVariable(name = "studentId") Long studentId, @PathVariable(name = "courseId") Long courseId, Model model)
+	{
+		System.out.println("Désassociation étudiant à l'id \"" + studentId + "\" au cours à l'id \"" + courseId + "\"");
+
+		studentCourseService.disassociateCourse(studentId, courseId);
+
+		model.addAttribute("message", "Cours supprimé avec succès");
+		
+		RedirectView redirectView = new RedirectView("/coursEtudiant/associateCourse/" + studentId);
+
+		return redirectView;
 	}
 }

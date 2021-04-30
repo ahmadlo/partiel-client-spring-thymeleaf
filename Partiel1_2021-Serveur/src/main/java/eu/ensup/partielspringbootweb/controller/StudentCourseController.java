@@ -1,5 +1,8 @@
 package eu.ensup.partielspringbootweb.controller;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +52,35 @@ public class StudentCourseController
 
 		System.out.println(">> student " + student);
 		System.out.println(">> course " + course);
+		
+		return studentService.updateStudent(student);
+	}
+	
+	@GetMapping("/removeStudentCourse/{studentId}/{courseId}")
+	public Student removeStudentCourse(@PathVariable(value = "studentId") Long studentId,
+			@PathVariable(value = "courseId") Long courseId) throws ResourceNotFoundException
+	{
+		Student student = studentService.getStudent(studentId);
+		Course course = courseService.getCourse(courseId);
+		
+		Set<Course> studentCourses = student.getCourses();
+		System.out.println(">> AV studentCourses " + studentCourses);
+		
+		Course courseToRemove = null;
+		
+		for (Course studentCourse : studentCourses)
+		{
+			if (studentCourse.getId() == course.getId())
+				courseToRemove = studentCourse;
+		}
+		
+		if (courseToRemove == null)
+			return studentService.updateStudent(student);
+		
+		studentCourses.remove(courseToRemove);
+		student.setCourses(studentCourses);
+
+		System.out.println(">> AP studentCourses " + studentCourses);
 		
 		return studentService.updateStudent(student);
 	}

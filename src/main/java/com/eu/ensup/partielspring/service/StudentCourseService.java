@@ -30,4 +30,22 @@ public class StudentCourseService implements IStudentCourseService
 		
 		return response;		
 	}
+	
+	/**
+	 * Methode pour désassocier un cours à un étudiant
+	 * @param studentId
+	 * @param courseId
+	 * @return
+	 */
+	@Override
+	public Response disassociateCourse(Long studentId, Long courseId) {
+		
+		Client client = ClientBuilder.newClient();
+		
+		WebTarget webTarget = client.target(url).path("removeStudentCourse/" + studentId + "/" + courseId);
+		
+		Response response = webTarget.request("application/json").get();
+		
+		return response;		
+	}
 }

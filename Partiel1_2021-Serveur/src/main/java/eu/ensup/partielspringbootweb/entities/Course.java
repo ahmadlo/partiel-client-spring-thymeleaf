@@ -28,7 +28,7 @@ public class Course
 	private String themeCourse;
 	private int numberHours;
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(
             name = "student_course",
             joinColumns = {@JoinColumn(name = "course_id")},

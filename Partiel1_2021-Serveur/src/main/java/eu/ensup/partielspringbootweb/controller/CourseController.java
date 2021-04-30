@@ -1,6 +1,9 @@
 package eu.ensup.partielspringbootweb.controller;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.validation.Valid;
 
@@ -53,9 +56,6 @@ public class CourseController {
 		return courseService.getCourse(id);
 	}
 	
-	
-
-	
 	@PostMapping("/create")
 	public void createCourse(@Valid @RequestBody Course course) {
 		System.out.println("++++++++++++ REquestBody +++++++++++: "+ course);
@@ -64,7 +64,28 @@ public class CourseController {
 	}
 	
 	@DeleteMapping("/delete/{id}")
-	public void deleteCourse(@PathVariable(value = "id") Long id) {
+	public void deleteCourse(@PathVariable(value = "id") Long id) throws ResourceNotFoundException {
+		
+		Course course = courseService.getCourse(id);
+		
+		Set<Student> courseStudents = course.getStudents();
+		System.out.println(">> AV courseStudents " + courseStudents);
+		
+		List<Student> studentsToRemove = new ArrayList<Student>();
+		
+		for (Student courseStudent : courseStudents)
+		{
+			studentsToRemove.add(courseStudent);
+		}
+		
+		for (Student studentToRemove : studentsToRemove)
+		{
+			courseStudents.remove(studentToRemove);
+		}
+		
+		course.setStudents(courseStudents);
+		
+		courseService.updateCourse(id, course);
 		
 		courseService.deleteCourse(id);
 		
@@ -76,9 +97,4 @@ public class CourseController {
 		final Course updatedCoure = courseService.updateCourse(id, course);
 		return ResponseEntity.ok(updatedCoure);
 	}
-	
-	
-	
-	
-	
 }

@@ -17,26 +17,21 @@ import javax.persistence.ManyToMany;
 @Entity
 public class Student extends Personne
 {
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Set<Course> courses = new HashSet<Course>();
 
 	public Student()
 	{
 		super();
-		
 	}
 	
 	public Student(Long id, String firstName, String lastName, String mail, String address, String phone, Date dob) {
 		super(id, firstName, lastName, mail, address, phone, dob);
 	}
 
-
-
 	public Set<Course> getCourses() {
 		return courses;
 	}
-
-
 
 	public void setCourses(Set<Course> courses) {
 		this.courses = courses;
