@@ -1,7 +1,6 @@
 package eu.ensup.partielspringbootweb.entities;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -24,49 +23,38 @@ import javax.persistence.ManyToMany;
 public class Course
 {
 	@Id
-	 @GeneratedValue(strategy=GenerationType.IDENTITY)
-	 private Long id;
-    private Long idCourse;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 	private String themeCourse;
 	private int numberHours;
-	
+
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
-				
-				joinColumns = @JoinColumn(name = "idCourse"),
-				inverseJoinColumns =  @JoinColumn(name = "id")
-			)
+            name = "student_course",
+            joinColumns = {@JoinColumn(name = "course_id")},
+            inverseJoinColumns = {@JoinColumn(name = "student_id")}
+    )
 	private Set<Student> students = new HashSet<Student>();
+
 	public Course()
 	{
 		super();
 	}
-
 
 	public Course(String themeCourse, int numberHours, Long id)
 	{
 		super();
 		this.themeCourse = themeCourse;
 		this.numberHours = numberHours;
-		this.idCourse = id;
-	}
-	
-	
-
-
-	public Long getIdCourse() {
-		return idCourse;
 	}
 
-	public void setIdCourse(Long idCourse) {
-		this.idCourse = idCourse;
-	}
-	
-	public Long getId() {
+	public Long getId()
+	{
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Long id)
+	{
 		this.id = id;
 	}
 
@@ -90,22 +78,21 @@ public class Course
 		this.numberHours = numberHours;
 	}
 
-	
-	public Set<Student> getStudents() {
+	public Set<Student> getStudents()
+	{
 		return students;
 	}
 
-	public void setStudents(Set<Student> students) {
+	public void setStudents(Set<Student> students)
+	{
 		this.students = students;
 	}
 
-	
 	@Override
-	public String toString() {
-		return "Course [id=" + id + ", idCourse=" + idCourse + ", themeCourse=" + themeCourse + ", numberHours="
+	public String toString()
+	{
+		return "Course [id=" + id + ", themeCourse=" + themeCourse + ", numberHours="
 				+ numberHours + ", students=" + students + "]";
 	}
-	
-	
-	
+
 }

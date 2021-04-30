@@ -84,11 +84,12 @@ public class StudentController {
 		
 	}
 	
-	@PutMapping("/update/{id}")
+	@PutMapping("/addStudentCourse/{studentId}/{courseId}")
 	public Student updateStudent(@PathVariable(value = "id") Long id, @Valid @RequestBody Student student) throws ResourceNotFoundException {
 		
 		Student studentFound = studentService.getStudent(id);
-		System.out.println("le student found"+studentFound.getId());
+		System.out.println("le student found " + studentFound);
+		System.out.println("new student " + student);
 		Set<Course> studentCourses = studentFound.getCourses();
 		studentCourses.addAll(student.getCourses());
 		studentFound.setCourses(studentCourses);

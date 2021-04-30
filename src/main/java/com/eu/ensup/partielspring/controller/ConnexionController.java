@@ -5,6 +5,7 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,29 +14,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.eu.ensup.partielspring.domaine.User;
 import com.eu.ensup.partielspring.exceptions.UserNotFoundException;
-import com.eu.ensup.partielspring.service.CoursServiceClient;
-import com.eu.ensup.partielspring.service.ICoursServiceClient;
-import com.eu.ensup.partielspring.service.IStudentServiceClient;
 import com.eu.ensup.partielspring.service.IUserServiceClient;
-import com.eu.ensup.partielspring.service.StudentServiceClient;
-import com.eu.ensup.partielspring.service.UserServiceClient;
-
 
 @Controller
 public class ConnexionController {
 
+	@Autowired
 	private IUserServiceClient userService;
-	private IStudentServiceClient studentService;
-	private ICoursServiceClient courseService;
-
-	/**
-	 * Default constructor.
-	 */
-	public ConnexionController() {
-		userService = new UserServiceClient();
-		courseService = new CoursServiceClient();
-		studentService = new StudentServiceClient();
-	}
 	
 	@GetMapping("/home")
 	public String home(HttpSession session) {
@@ -85,9 +70,6 @@ public class ConnexionController {
 				session.setAttribute("user", userRetour);
 				
 				model.addAttribute("profil", profil);
-				model.addAttribute("students", studentService.getListStudent());
-				model.addAttribute("courses", courseService.getAllCours());
-					
 			}
 			
 		}

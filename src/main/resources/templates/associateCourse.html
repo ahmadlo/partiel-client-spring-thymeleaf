@@ -1,0 +1,82 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.thymeleaf.org ">
+<head th:replace="header">
+<title id="pageTitle">Associer cours</title>
+</head>
+<body>
+	<!-- header -->
+	<div th:insert="header"></div>
+
+	<!-- Navigation-->
+	<div th:insert="menuhaut"></div>
+
+	<section class="page-section home" id="home">
+
+		<div class="container">
+			<br>
+			<div class="alert alert-danger" role="alert" th:if="${error != null}"
+				th:utext="${error}"></div>
+			<!-- Masthead Heading-->
+			<h1>Associer un cours à un étudiant</h1>
+
+			<div class="">
+
+				<div class="pt-4 pb-3">
+
+					<form th:action="@{/coursEtudiant/associateCourse}" method="post">
+
+						<div class="form-row">
+
+							<div class="col">
+								<div class="form-group">
+									<label for="studentName">Etudiant</label> <input
+										id="studentName" class="form-control" name="studentName"
+										type="text"
+										th:value="${student.getFirstName() + ' ' + student.getLastName()}"
+										disabled> <input type="hidden" name="studentId"
+										th:value="${student.getId()}">
+								</div>
+							</div>
+
+							<div class="col">
+								<div class="form-group">
+									<label for="courseId">Libellé cours</label> <select
+										class="form-control" id="courseId" name="courseId">
+										<option th:each="course : ${courses}"
+											th:value="${course.getId()}"
+											th:text="${course.getThemeCourse()}"></option>
+									</select>
+								</div>
+							</div>
+
+						</div>
+
+						<br /> <br />
+						<div class="text-center mb-2">
+							<button type="submit" class="btn btn-primary mb-4"
+								th:disabled="${courses.isEmpty()}">Valider</button>
+						</div>
+
+					</form>
+					<h4>Cours associés :</h4>
+					<br>
+					<div class="row" th:if="${!studentCourses.isEmpty()}">
+						<ul>
+							<li th:each="course : ${studentCourses}">
+								<span th:text="${course.getThemeCourse() + ' (' + course.getNumberHours() + 'h)'}"></span></li>
+						</ul>
+					</div>
+					<div class="row" th:if="${studentCourses.isEmpty()}">
+						<p>Aucun cours n'est associé à cet étudiant</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- footer -->
+	<div th:insert="footer"></div>
+</body>
+</html>

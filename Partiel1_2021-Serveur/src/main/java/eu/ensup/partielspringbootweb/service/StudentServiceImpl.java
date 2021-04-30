@@ -96,7 +96,9 @@ public class StudentServiceImpl implements IStudentService {
 	 */
 	@Override
 	public Student updateStudent(Student student) {
-		
+		System.out.println();
+		System.out.println("Student to be saved :");
+		System.out.println(student);
 		return studentRepo.save(student);
 		
 	}

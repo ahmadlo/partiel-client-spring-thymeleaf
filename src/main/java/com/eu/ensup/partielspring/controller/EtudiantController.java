@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.annotation.Validated;
@@ -16,21 +17,13 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.eu.ensup.partielspring.domaine.Student;
 import com.eu.ensup.partielspring.service.IStudentServiceClient;
-import com.eu.ensup.partielspring.service.StudentServiceClient;
 
 @Controller
 @RequestMapping("/etudiant")
 public class EtudiantController {
-	private static final long serialVersionUID = 1L;
-	private IStudentServiceClient studentService;
 
-	
-	
-	public EtudiantController() {
-		
-		studentService = new StudentServiceClient();
-		
-	}
+	@Autowired
+	private IStudentServiceClient studentService;
 
 	@GetMapping("")
 	public String etudiantHome(Model model) {
@@ -49,44 +42,60 @@ public class EtudiantController {
 	
 	@PostMapping("/storeStudent")
 	public String storeStudent(@Validated @ModelAttribute("student")Student student, Model model) {
+		
 		System.out.println(student);
+		
 		studentService.createStudent(student);
+		
 		model.addAttribute("studentList", studentService.getListStudent());
 		model.addAttribute("message", "Etudiant ajouté avec succès");
+		
 		return "listEtudiant";
 	}
 	
 	@GetMapping("/updateStudent/{id}")
 	public String updateStudent(@PathVariable(name = "id") Long id, Model model) {
+		
 		model.addAttribute( "student", studentService.getStudentById(id) );
+		
 		return "updateEtudiant";
 	}
 	
 	@PostMapping("/editStudent/{id}")
 	public RedirectView editStudent(@PathVariable(name = "id") Long id, @Validated @ModelAttribute("student")Student student, Model model) {
+		
 		System.out.println("Etudiant à modifier : " + student);
+		
 		studentService.updateStudent(id, student);
+		
 		model.addAttribute("message", "Etudiant modifié avec succès");
 		model.addAttribute("studentList", studentService.getListStudent());
+		
 		return new RedirectView("/etudiant");
 	}
 	
 	@GetMapping("/deleteStudent/{id}")
 	public RedirectView deleteStudent(@PathVariable(name = "id") Long id, Model model) {
+		
 		studentService.deleteStudent(id);
+		
 		model.addAttribute("studentList", studentService.getListStudent());
 		model.addAttribute("message", "Etudiant supprimé avec succès");
+		
 		return new RedirectView("/etudiant");
 	}
 	
 	@GetMapping("/viewStudent/{id}")
 	public String viewStudent(@PathVariable(name = "id") Long id, Model model) {
+		
 		model.addAttribute( "student", studentService.getStudentById(id) );
+		
 		return "viewEtudiant";
 	}
 
 	@PostMapping("/search")
 	public String authentification(@ModelAttribute(name="searchText") String searchText, Model model) {
+		
 		if (searchText == null || searchText == "")
 			return "listEtudiant";
 		

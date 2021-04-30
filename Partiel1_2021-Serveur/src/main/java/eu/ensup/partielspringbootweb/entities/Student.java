@@ -1,25 +1,13 @@
 package eu.ensup.partielspringbootweb.entities;
 
-import java.util.Collection;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.NamedAttributeNode;
-import javax.persistence.NamedEntityGraph;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 
 /**
  * Classe métier représentant un étudiant .
@@ -27,13 +15,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
  *
  */
 @Entity
-@DiscriminatorValue("STUDENT")
-@JsonIgnoreProperties(value = {"courses"})
 public class Student extends Personne
 {
-	
 	@ManyToMany(fetch = FetchType.EAGER)
-	private Set<Course> courses =  new HashSet<Course>();
+	private Set<Course> courses = new HashSet<Course>();
 
 	public Student()
 	{
@@ -56,9 +41,12 @@ public class Student extends Personne
 	public void setCourses(Set<Course> courses) {
 		this.courses = courses;
 	}
-	
-	
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "Etudiant [cours=" + courses + ", getId()=" + getId() + ", getFirstName()=" + getFirstName()
+				+ ", getLastName()=" + getLastName() + ", getMail()=" + getMail() + ", getAddress()=" + getAddress()
+				+ ", getPhone()=" + getPhone() + ", getDob()=" + getDob() + ", getClass()=" + getClass()
+				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
+	}
 }

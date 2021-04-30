@@ -1,41 +1,49 @@
 package com.eu.ensup.partielspring.domaine;
 
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
-public class Student extends Personne {
-	
-	private List<Course> courses;
-	
+public class Student extends Personne
+{
 
-	public Student(String firstName, String lastName, String mail, String address, String phone, Date dob) {
+	private Set<Course> courses;
+
+	public Student(String firstName, String lastName, String mail, String address, String phone, Date dob)
+	{
 		super(firstName, lastName, mail, address, phone, dob);
 	}
 
-	public Student(String firstName, String lastName, String mail, String address, String phone, Date dob, List<Course> courses) {
+	public Student(String firstName, String lastName, String mail, String address, String phone, Date dob,
+			Set<Course> courses)
+	{
 		super(firstName, lastName, mail, address, phone, dob);
 		this.courses = courses;
 	}
 
-	public Student() {
+	public Student()
+	{
 		super();
 	}
 
-	public List<Course> getCourses() {
+	public Set<Course> getCourses()
+	{
+		if (courses == null)
+			courses = new HashSet<Course>();
 		return courses;
 	}
 
-	public void setCourses(List<Course> courses) {
+	public void setCourses(Set<Course> courses)
+	{
 		this.courses = courses;
 	}
 
 	@Override
-	public String toString() {
+	public String toString()
+	{
 		return "Etudiant [cours=" + courses + ", getId()=" + getId() + ", getFirstName()=" + getFirstName()
 				+ ", getLastName()=" + getLastName() + ", getMail()=" + getMail() + ", getAddress()=" + getAddress()
 				+ ", getPhone()=" + getPhone() + ", getDob()=" + getDob() + ", getClass()=" + getClass()
 				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
-
-
 }

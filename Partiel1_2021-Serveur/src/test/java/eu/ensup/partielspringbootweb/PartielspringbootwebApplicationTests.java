@@ -149,7 +149,7 @@ class PartielspringbootwebApplicationTests {
 		
 		Course math = new Course("math",12,1L);
 		courseRepository.delete(math);
-		courseService.deleteCourse(math.getIdCourse());
+		courseService.deleteCourse(math.getId());
         Mockito.verify(courseRepository, Mockito.times(1)).delete(math);
 	}
 	
@@ -159,7 +159,7 @@ class PartielspringbootwebApplicationTests {
 
 		Mockito.when(courseRepository.save(math)).thenReturn(math);
 		
-		Course result = courseService.updateCourse(math.getIdCourse(), math);
+		Course result = courseService.updateCourse(math.getId(), math);
 		Mockito.verify(courseRepository).save(math);
 		assertEquals(result,math);
 	}
@@ -174,7 +174,7 @@ class PartielspringbootwebApplicationTests {
 		Mockito.when(courseRepository.findById(id)).thenReturn(optional);
 		Course  result = courseService.getCourse(1L);
 		if(result != null) {
-			assertEquals(Long.valueOf(1L), result.getIdCourse());
+			assertEquals(Long.valueOf(1L), result.getId());
 
 		}
 		
