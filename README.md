@@ -1,6 +1,12 @@
 # partiel_spring_thymeleaf
 Evolution du projet Gestion Ecole avec springMVC et thymeleaf
 
+## Développeurs 
+
+- [Benjamin Boutrois](https://github.com/BenjaminBoutrois)
+- [Ahmadou LO](https://github.com/ahmadlo)
+- [Giovanni Simon](https://github.com/GioSimon)
+
 ## PREREQUIS: 
 
 Installer [maven](https://maven.apache.org/download.cgi)
@@ -21,6 +27,8 @@ Avoir un serveur de Base de données MYSQL ou MARIADB
 * Verifier et Mettre à jour les informations de connexions à la base de données ( username et password )
 
 * Vérifier et Mettre à jour  le port de connexion avec votre serveur de base de données ( datasource.url) 
+
+* Créer une base de données vide sous le nom *partielspringboot* 
 
 * Importer le fichier de base de données *partielspringboot.sql* dans votre Serveur de base de données  
   
