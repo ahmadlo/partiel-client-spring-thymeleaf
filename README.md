@@ -60,7 +60,7 @@ Avoir un serveur de Base de données MYSQL ou MARIADB
     
    - Vérifiez bien que le l'application Client tourne  ( n'hésitez pas à nous contacter pour plus de support )
     
-   - Lancer votre  navigateur et aller à l'url pour vérifier : [gesco-client](http://localhost:8004l)
+   - Lancer votre  navigateur et aller à l'url pour vérifier : [gesco-client](http://localhost:8080/)
      
    - Se connecter avec les infos (login et password ) de l'utilisateur créé dans l'étape 3
 
