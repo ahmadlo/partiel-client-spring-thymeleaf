@@ -3,9 +3,7 @@ Evolution du projet Gestion Ecole avec springMVC et thymeleaf
 
 ## PREREQUIS: 
 
-Installer [tomcat](https://tomcat.apache.org/tomcat-8.5-doc/setup.html)
-
-Installer maven
+Installer [maven](https://maven.apache.org/download.cgi)
 
 Avoir un serveur de Base de données MYSQL ou MARIADB
 
