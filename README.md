@@ -59,7 +59,7 @@ Avoir un serveur de Base de données MYSQL ou MARIADB
     
    - Lancer votre  navigateur et aller à l'url pour vérifier : [gesco-client](http://localhost:8080/)
      
-   - Se connecter avec les infos (login et password ) de l'utilisateur créé dans l'étape 3
+   - Se connecter avec les infos  login : admin  - password : admin
 
 Maintenant vous pouvez profitez pleinement !!!
 
