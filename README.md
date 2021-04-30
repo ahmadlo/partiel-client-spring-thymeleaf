@@ -22,8 +22,7 @@ Avoir un serveur de Base de données MYSQL ou MARIADB
 
 * Vérifier et Mettre à jour  le port de connexion avec votre serveur de base de données ( datasource.url) 
 
-
-* Créer une base de données vide avec le nom "partielspringboot"
+* Importer le fichier de base de données *partielspringboot.sql* dans votre Serveur de base de données  
   
  Maintenant vous pouvez passer à l'étape suivante à savoir Démarrer le Serveur 
     
