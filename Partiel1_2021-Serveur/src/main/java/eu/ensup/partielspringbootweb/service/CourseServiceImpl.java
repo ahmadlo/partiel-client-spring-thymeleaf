@@ -26,7 +26,8 @@ public class CourseServiceImpl implements ICourseService
 	}
 
 	/**
-	 * Methode renvoi la liste de tous les cours
+	 * Récupère la liste de tous les cours.
+	 * @return La liste de tous les cours.
 	 */
 	@Override
 	public List<Course> getAllCourses()
@@ -35,7 +36,9 @@ public class CourseServiceImpl implements ICourseService
 	}
 
 	/**
-	 * Methode de creation de cours renvoi le cours créer
+	 * Crée un cours.
+	 * @param course Le cours à créer.
+	 * @return Le cours créé.
 	 */
 	@Override
 	public Course createCourse(Course course)
@@ -44,10 +47,10 @@ public class CourseServiceImpl implements ICourseService
 	}
 
 	/**
-	 * Mthode de recherche d'un cours par son id
+	 * Récupère un cours par son id.
 	 * 
-	 * @param prend en parametre id de type Long
-	 * @return renvoi le cours trouver
+	 * @param id L'id du cours à récupérer.
+	 * @return Le cours correspondant à l'id.
 	 */
 
 	@Override
@@ -65,11 +68,11 @@ public class CourseServiceImpl implements ICourseService
 	}
 
 	/**
-	 * Methode de mise a jour des informations d'un cours
+	 * Met à jour les informations d'un cours.
 	 * 
-	 * @param id
-	 * @param course
-	 * @return renvoi le cours
+	 * @param id L'id du cours à modifier.
+	 * @param course Le cours contenant les informations à mettre à jour.
+	 * @return Le cours mis à jour.
 	 */
 	@Override
 	public Course updateCourse(Long id, Course course)
@@ -95,9 +98,9 @@ public class CourseServiceImpl implements ICourseService
 	}
 
 	/**
-	 * methode de suppression de cours
+	 * Supprimme un cours
 	 * 
-	 * @param id
+	 * @param id L'id du cours à supprimer.
 	 * 
 	 */
 	@Override

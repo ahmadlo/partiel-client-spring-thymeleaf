@@ -25,7 +25,9 @@ public class StudentServiceImpl implements IStudentService
 	}
 
 	/**
-	 * Methode de creation d'etudiant renvoi l'etudiant créer
+	 * Crée un étudiant.
+	 * @param student L'étudiant à créer.
+	 * @return L'étudiant créé.
 	 */
 	@Override
 	public Student createStudent(Student student)
@@ -34,31 +36,29 @@ public class StudentServiceImpl implements IStudentService
 	}
 
 	/**
-	 * Mthode de recherche d'etudiant par son id
+	 * Récupère un étudiant par son id.
 	 * 
-	 * @param prend en parametre id de type Long
-	 * @return renvoi l'etudiant trouver
+	 * @param id L'id de l'étudiant à récupérer.
+	 * @return L'étudiant correspondant à l'id.
 	 */
 	@Override
 	public Student getStudent(Long id) throws ResourceNotFoundException
 	{
-		// TODO Auto-generated method stub
-		Student stu = null;
+		Student student = null;
 		Optional<Student> stuFound = studentRepo.findById(id);
 		if (stuFound.isPresent())
 		{
-			stu = stuFound.get();
+			student = stuFound.get();
 		}
 
-		return stu;
-
+		return student;
 	}
 
 	/**
-	 * Methode de recherche d'etudiant par son email
+	 * Récupère un étudiant par son mail.
 	 * 
-	 * @param prend en parametre un mail de type String
-	 * @return renvoi l'etudiant trouvé
+	 * @param mail Le mail de l'étudiant à récupérer.
+	 * @return L'étudiant correspondant au mail.
 	 */
 	@Override
 	public Student getStudentByMail(String mail)
@@ -67,7 +67,7 @@ public class StudentServiceImpl implements IStudentService
 	}
 
 	/**
-	 * Methode renvoi la liste de tous les etudiants
+	 * Renvoie de la liste de tous les étudiants.
 	 */
 	@Override
 	public List<Student> getAllStudents()
@@ -76,9 +76,9 @@ public class StudentServiceImpl implements IStudentService
 	}
 
 	/**
-	 * methode de suppression d'etudiant
+	 * Supprime un étudiant.
 	 * 
-	 * @param id
+	 * @param id L'id de l'étudiant à supprimer.
 	 * 
 	 */
 	@Override
@@ -95,14 +95,13 @@ public class StudentServiceImpl implements IStudentService
 
 			studentRepo.delete(student);
 		}
-
 	}
 
 	/**
-	 * Methode de mise a jour des informations des etudiants
+	 * Met à jour les informations d'un étudiant.
 	 * 
-	 * @param etudiant
-	 * @return renvoi l'etudiant
+	 * @param student L'étudiant à modifier.
+	 * @return L'étudiant modifié.
 	 */
 	@Override
 	public Student updateStudent(Student student)
@@ -113,11 +112,11 @@ public class StudentServiceImpl implements IStudentService
 	}
 
 	/**
-	 * Methode de recherche d'etudiant par son prenom et nom
+	 * Recherche un étudiant par son prénom et nom.
 	 * 
-	 * @param firstName
-	 * @param lastName
-	 * @return renvoi une liste d'etudiant
+	 * @param firstName Le prénom de l'étudiant à rechercher.
+	 * @param lastName Le nom de l'étudiant à rechercher.
+	 * @return La liste des étudiants correspondant.
 	 */
 	@Override
 	public List<Student> searchStudent(String firstName, String lastName)

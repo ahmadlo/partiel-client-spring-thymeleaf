@@ -11,14 +11,14 @@ public interface ICourseService
 	 * Crée un cours en base de données.
 	 * 
 	 * @param course Cours à créer.
-	 * @return
+	 * @return Le cours créé.
 	 */
 	Course createCourse(Course course);
 
 	/**
 	 * Retourne un cours en fonction de son id.
 	 * 
-	 * @param id L'id du cours à chercher.
+	 * @param id L'id du cours à récupérer.
 	 * @return Le cours dont l'id correspond.
 	 * @throws ResourceNotFoundException
 	 */

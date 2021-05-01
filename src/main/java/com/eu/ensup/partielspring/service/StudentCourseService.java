@@ -14,10 +14,10 @@ public class StudentCourseService implements IStudentCourseService
 	private static final String url = "http://localhost:8004/SpringMVC/servlet/studentCourse/";
 	
 	/**
-	 * Methode pour associer un cours à un étudiant
-	 * @param studentId
-	 * @param courseId
-	 * @return
+	 * Associe un cours à un étudiant.
+	 * @param studentId L'id de l'étudiant à associer.
+	 * @param courseId L'id du cours à associer.
+	 * @return La réponse du service REST.
 	 */
 	@Override
 	public Response associateCourse(Long studentId, Long courseId) {
@@ -32,10 +32,10 @@ public class StudentCourseService implements IStudentCourseService
 	}
 	
 	/**
-	 * Methode pour désassocier un cours à un étudiant
-	 * @param studentId
-	 * @param courseId
-	 * @return
+	 * Dissocie un cours d'un étudiant.
+	 * @param studentId L'id de l'étudiant à dissocier.
+	 * @param courseId L'id du cours à dissocier.
+	 * @return La réponse du service REST.
 	 */
 	@Override
 	public Response disassociateCourse(Long studentId, Long courseId) {

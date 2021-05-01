@@ -18,22 +18,22 @@ import org.springframework.web.servlet.view.RedirectView;
 
 import com.eu.ensup.partielspring.domaine.Course;
 import com.eu.ensup.partielspring.domaine.Student;
-import com.eu.ensup.partielspring.service.ICoursServiceClient;
+import com.eu.ensup.partielspring.service.ICoursService;
 import com.eu.ensup.partielspring.service.IStudentCourseService;
-import com.eu.ensup.partielspring.service.IStudentServiceClient;
+import com.eu.ensup.partielspring.service.IStudentService;
 
 @Controller
 @RequestMapping("/coursEtudiant")
 public class StudentCourseController
 {
 	@Autowired
-	private IStudentServiceClient studentService;
+	private IStudentService studentService;
 
 	@Autowired
 	private IStudentCourseService studentCourseService;
 
 	@Autowired
-	private ICoursServiceClient courseService;
+	private ICoursService courseService;
 
 	@GetMapping("/associateCourse/{studentId}")
 	public String associateCourse(@PathVariable(name = "studentId") Long studentId, Model model)
@@ -45,7 +45,7 @@ public class StudentCourseController
 		Set<Course> studentCourses = student.getCourses();
 		
 		courses =
-				courseService.getAllCours()
+				courseService.getAllCourses()
 				.stream()
 				.filter(c -> !studentCourses.stream().anyMatch(c2 -> c2.getId() == c.getId()))
 				.filter(Objects::nonNull)

@@ -11,14 +11,14 @@ public interface IStudentService
 	 * Crée un étudiant en base de données.
 	 * 
 	 * @param student L'étudiant à créer.
-	 * @return 
+	 * @return L'étudiant créé.
 	 */
 	Student createStudent(Student student);
 
 	/**
 	 * Retourne un étudiant en fonction de son id.
 	 * 
-	 * @param id L'id de l'étudiant à chercher.
+	 * @param id L'id de l'étudiant à récupérer.
 	 * @return L'étudiant dont l'id correspond.
 	 * @throws ResourceNotFoundException 
 	 */

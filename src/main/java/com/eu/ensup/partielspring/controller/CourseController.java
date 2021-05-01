@@ -11,20 +11,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.eu.ensup.partielspring.domaine.Course;
-import com.eu.ensup.partielspring.service.ICoursServiceClient;
+import com.eu.ensup.partielspring.service.ICoursService;
 
 @Controller
 @RequestMapping("/course")
 public class CourseController {
 
 	@Autowired
-	private ICoursServiceClient courseService;
+	private ICoursService courseService;
 
 	@GetMapping("")
 	public String courseHome(Model model) {
 		System.out.println("Course HOme ");
 		
-		model.addAttribute("courseList", courseService.getAllCours());
+		model.addAttribute("courseList", courseService.getAllCourses());
 		
 		return "listCourse";
 	}
@@ -38,9 +38,9 @@ public class CourseController {
 	public String storeCourse(@Validated @ModelAttribute("course")Course course, Model model) {
 		
 		course.setId((long) 0);
-		courseService.createCours(course);
+		courseService.createCourse(course);
 		
-		model.addAttribute("courseList", courseService.getAllCours());
+		model.addAttribute("courseList", courseService.getAllCourses());
 		model.addAttribute("message", "Course ajouté avec succès");
 		
 		return "listCourse";
@@ -49,7 +49,7 @@ public class CourseController {
 	@GetMapping("/updateCourse/{id}")
 	public String updateCourse(@PathVariable(name = "id") Long id, Model model) {
 		
-		model.addAttribute( "course", courseService.getCoursById(id) );
+		model.addAttribute( "course", courseService.getCourseById(id) );
 		
 		return "updateCourse";
 	}
@@ -57,10 +57,10 @@ public class CourseController {
 	@PostMapping("/editCourse/{id}")
 	public String editCourse(@PathVariable(name = "id") Long id, @Validated @ModelAttribute("course")Course course, Model model) {
 		
-		courseService.updateCours(id, course);
+		courseService.updateCourse(id, course);
 		
 		model.addAttribute("message", "Course modifié avec succès");
-		model.addAttribute("courseList", courseService.getAllCours());
+		model.addAttribute("courseList", courseService.getAllCourses());
 		
 		return "listCourse";
 	}
@@ -68,9 +68,9 @@ public class CourseController {
 	@GetMapping("/deleteCourse/{id}")
 	public String deleteCourse(@PathVariable(name = "id") Long id, Model model) {
 		
-		courseService.deleteCours(id);
+		courseService.deleteCourse(id);
 		
-		model.addAttribute("courseList", courseService.getAllCours());
+		model.addAttribute("courseList", courseService.getAllCourses());
 		model.addAttribute("message", "Course supprimé avec succès");
 		
 		//return new RedirectView("/etudiant");
@@ -80,7 +80,7 @@ public class CourseController {
 	@GetMapping("/viewCourse/{id}")
 	public String viewCourse(@PathVariable(name = "id") Long id, Model model) {
 		
-		model.addAttribute( "course", courseService.getCoursById(id) );
+		model.addAttribute( "course", courseService.getCourseById(id) );
 		
 		return "viewCourse";
 	}

@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"eu.ensup.partielspringbootweb"},{"l":"eu.ensup.partielspringbootweb.config"},{"l":"eu.ensup.partielspringbootweb.controller"},{"l":"eu.ensup.partielspringbootweb.entities"},{"l":"eu.ensup.partielspringbootweb.repositories"},{"l":"eu.ensup.partielspringbootweb.service"}];updateSearchResults();

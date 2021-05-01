@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.eu.ensup.partielspring.domaine.User;
 import com.eu.ensup.partielspring.exceptions.UserNotFoundException;
-import com.eu.ensup.partielspring.service.IUserServiceClient;
+import com.eu.ensup.partielspring.service.IUserService;
 
 @Controller
 public class ConnexionController {
 
 	@Autowired
-	private IUserServiceClient userService;
+	private IUserService userService;
 	
 	@GetMapping("/home")
 	public String home(HttpSession session) {

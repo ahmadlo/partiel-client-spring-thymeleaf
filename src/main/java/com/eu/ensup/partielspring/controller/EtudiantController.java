@@ -16,14 +16,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.eu.ensup.partielspring.domaine.Student;
-import com.eu.ensup.partielspring.service.IStudentServiceClient;
+import com.eu.ensup.partielspring.service.IStudentService;
 
 @Controller
 @RequestMapping("/etudiant")
 public class EtudiantController {
 
 	@Autowired
-	private IStudentServiceClient studentService;
+	private IStudentService studentService;
 
 	@GetMapping("")
 	public String etudiantHome(Model model) {
