@@ -1,7 +1,5 @@
+com.eu.ensup.partielspring
+com.eu.ensup.partielspring.controller
+com.eu.ensup.partielspring.domaine
+com.eu.ensup.partielspring.exceptions
 com.eu.ensup.partielspring.service
-eu.ensup.partielspringbootweb
-eu.ensup.partielspringbootweb.config
-eu.ensup.partielspringbootweb.controller
-eu.ensup.partielspringbootweb.entities
-eu.ensup.partielspringbootweb.repositories
-eu.ensup.partielspringbootweb.service
