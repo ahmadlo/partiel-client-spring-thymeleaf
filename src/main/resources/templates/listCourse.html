@@ -7,29 +7,18 @@
 <title id="pageTitle">Liste cours</title>
 </head>
 <body>
-	<!-- header -->
-	<!-- 	<div th:insert="header"></div> -->
-
 	<!-- Navigation-->
 	<div th:insert="menuhaut"></div>
-
-
+	
 	<!-- Masthead-->
 	<section class="page-section home" id="home">
 		<!-- Content -->
 
 		<div class="container d-flex align-items-center flex-column">
-			<div th:if="${message != null}"
-				class="alert alert-secondary alert-dismissible fade show"
-				role="alert">
-				<strong th:utext="${message}"> </strong>
-				<button type="button" class="close" data-dismiss="alert"
-					aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-			</div>
-
 			<br>
+			
+			<div th:insert="message"></div>
+
 			<!-- Masthead Heading-->
 			<h1>Liste des cours</h1>
 

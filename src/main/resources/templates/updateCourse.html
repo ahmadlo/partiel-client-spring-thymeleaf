@@ -1,4 +1,5 @@
-	<!DOCTYPE HTML>
+
+<!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.thymeleaf.org ">
@@ -6,70 +7,53 @@
 <title id="pageTitle">Modifier cours</title>
 </head>
 <body>
-	<!-- header -->
-	<div th:insert="header"></div>
-
 	<!-- Navigation-->
 	<div th:insert="menuhaut"></div>
 
-	
-		<!-- Masthead-->
-		
-		<!-- Content -->
+	<section class="page-section home" id="home">
 
-  	
-		
 		<div class="container">
-	<br /> <br /> <br /> <br /> <br /> <br />
+			<br>
+			
+			<div th:insert="message"></div>
 
-	
+			<!-- Masthead Heading-->
+			<h1>Modifier un cours</h1>
 
-	<!-- Masthead Heading-->
-	<h1>Modifier un cours</h1>
-	
-	
-	<div class="">
-	
-		<div class="pt-4 pb-3">
+			<div class="pt-4 pb-3">
 
-			<form th:action="@{/course/editCourse/{id}(id=${course.id})}" method="post" modelAttribute="course">
+				<form th:action="@{/course/editCourse/{id}(id=${course.id})}"
+					method="post" modelAttribute="course">
 
-				<div class="form-row">
-				
-					<div class="col">
-						<div class="md-form md-outline mt-0">
-							<label for="firstName">Libellé cours</label>
-							<input type="text" th:field="*{course.themeCourse}" id="themeCourse" name="themeCourse" class="form-control"> 
+					<div class="form-row">
+
+						<div class="col">
+							<div class="md-form md-outline mt-0">
+								<label for="firstName">Libellé cours</label> <input type="text"
+									th:field="*{course.themeCourse}" id="themeCourse"
+									name="themeCourse" class="form-control">
+							</div>
 						</div>
-					</div>
-					
-					<div class="col">
-						<div class="md-form md-outline mt-0">
-							<label for="lastName">Nombre d'heures</label>
-							<input type="number"  th:field="*{course.numberHours}" id="numberHours" name="numberHours" class="form-control"> 
+
+						<div class="col">
+							<div class="md-form md-outline mt-0">
+								<label for="lastName">Nombre d'heures</label> <input
+									type="number" th:field="*{course.numberHours}" id="numberHours"
+									name="numberHours" class="form-control">
+							</div>
 						</div>
+
 					</div>
-					
-				</div>
-				
-				<br/> <br/>
-				<div class="text-center mb-2">
-					<button type="submit" class="btn btn-primary mb-4">Valider</button>
-				</div>
 
-			</form>
-
-
-
+					<br /> <br />
+					<div class="text-center mb-2">
+						<button type="submit" class="btn btn-primary mb-4">Valider</button>
+					</div>
+				</form>
+			</div>
 		</div>
-
-	</div>
-	<!-- Card -->
-
-</div>
-<!-- Fin ajout etudiant -->
-		
-		<!-- footer -->
+	</section>
+	<!-- footer -->
 	<div th:insert="footer"></div>
 </body>
 </html>

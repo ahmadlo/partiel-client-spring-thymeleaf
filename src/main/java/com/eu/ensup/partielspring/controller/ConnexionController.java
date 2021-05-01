@@ -17,75 +17,82 @@ import com.eu.ensup.partielspring.exceptions.UserNotFoundException;
 import com.eu.ensup.partielspring.service.IUserService;
 
 @Controller
-public class ConnexionController {
-
+public class ConnexionController
+{
 	@Autowired
 	private IUserService userService;
-	
+
 	@GetMapping("/home")
-	public String home(HttpSession session) {
+	public String home(HttpSession session)
+	{
 		if (session.getAttribute("user") == null)
 			return "login";
 		else
 			return "home";
 	}
-	
-	@GetMapping( path ={"/","/login"})
-	public String login() {
+
+	@GetMapping(path = { "/", "/login" })
+	public String login()
+	{
 		return "login";
 	}
 
-	
-	
 	@PostMapping("/login")
-	public String authentification(@ModelAttribute(name="login") String login, @ModelAttribute(name="password") String password,Model model,HttpSession session) throws ServletException, IOException, NullPointerException {
-		
+	public String authentification(@ModelAttribute(name = "login") String login,
+			@ModelAttribute(name = "password") String password, Model model, HttpSession session)
+			throws ServletException, IOException, NullPointerException
+	{
 		System.out.println("################# Login Authentification");
 		String reponse = "/login";
-		
+
 		try
 		{
 			User user = new User();
 			user.setLogin(login);
 			user.setPassword(password);
-			
-			System.out.println(user.getLogin() +" - " + user.getPassword());
-			
+
+			System.out.println(user.getLogin() + " - " + user.getPassword());
+
 			User userRetour = userService.login(user);
-			
+
 			System.out.println("auth result : " + userRetour.toString());
-			
+
 			if (userRetour != null && userRetour.getLogin().equalsIgnoreCase(login)
 					&& userRetour.getPassword().equalsIgnoreCase(password))
 			{
-					
-				reponse ="/home";
+
+				reponse = "/home";
 				String profil;
-				if(userRetour.getProfil().equalsIgnoreCase("D")) {
+				if (userRetour.getProfil().equalsIgnoreCase("D"))
+				{
 					profil = "Directeur";
 				}
-				else {
+				else
+				{
 					profil = "Responsable";
 				}
 				session.setAttribute("user", userRetour);
-				
+
 				model.addAttribute("profil", profil);
 			}
-			
+
 		}
 		catch (UserNotFoundException e)
-		{	
+		{
 			model.addAttribute("error", e.getMessage());
 			System.out.println("error : " + e.getMessage());
 		}
-		System.out.println(" Page to display : " +reponse);
 		
+		System.out.println(" Page to display : " + reponse);
+
 		return reponse;
 	}
-	
+
 	@GetMapping("/disconnect")
-	public String disconnect(HttpSession session) {
+	public String disconnect(HttpSession session)
+	{
 		session.removeAttribute("user");
+		
 		return "login";
 	}
 }

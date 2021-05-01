@@ -1,4 +1,3 @@
-
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -7,17 +6,16 @@
 <title id="pageTitle">Voir étudiant</title>
 </head>
 <body>
-	<!-- header -->
-	<!-- 	<div th:insert="header"></div> -->
-
 	<!-- Navigation-->
 	<div th:insert="menuhaut"></div>
 
 	<!-- Masthead-->
 	<section class="page-section home" id="home">
 		<!-- Content -->
-		<br>
 		<div class="container ">
+			<br>
+			
+			<div th:insert="message"></div>
 
 			<!-- Masthead Heading-->
 			<h1>Informations de l'étudiant</h1>
@@ -54,15 +52,8 @@
 					</div>
 				</div>
 			</div>
-
-
-			<!--Section: Live preview-->
-
 		</div>
-
-
 	</section>
-
 	<!-- footer -->
 	<div th:insert="footer"></div>
 </body>

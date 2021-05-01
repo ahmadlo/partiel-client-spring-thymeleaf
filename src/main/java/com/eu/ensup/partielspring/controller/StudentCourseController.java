@@ -39,18 +39,15 @@ public class StudentCourseController
 	public String associateCourse(@PathVariable(name = "studentId") Long studentId, Model model)
 	{
 		Student student = studentService.getStudentById(studentId);
-		
+
 		List<Course> courses = new ArrayList<Course>();
-		
+
 		Set<Course> studentCourses = student.getCourses();
-		
-		courses =
-				courseService.getAllCourses()
-				.stream()
-				.filter(c -> !studentCourses.stream().anyMatch(c2 -> c2.getId() == c.getId()))
-				.filter(Objects::nonNull)
+
+		courses = courseService.getAllCourses().stream()
+				.filter(c -> !studentCourses.stream().anyMatch(c2 -> c2.getId() == c.getId())).filter(Objects::nonNull)
 				.collect(Collectors.toList());
-		
+
 		if (courses.isEmpty())
 		{
 			model.addAttribute("error", "Aucun cours à associer n'a été trouvé.");
@@ -64,8 +61,8 @@ public class StudentCourseController
 	}
 
 	@PostMapping("/associateCourse")
-	public String associateCourse(@ModelAttribute("studentId") Long studentId, @ModelAttribute("courseId") Long courseId,
-			Model model)
+	public String associateCourse(@ModelAttribute("studentId") Long studentId,
+			@ModelAttribute("courseId") Long courseId, Model model)
 	{
 		System.out.println("Association étudiant à l'id \"" + studentId + "\" au cours à l'id \"" + courseId + "\"");
 
@@ -78,14 +75,15 @@ public class StudentCourseController
 	}
 
 	@GetMapping("/disassociateCourse/{studentId}/{courseId}")
-	public RedirectView disassociateCourse(@PathVariable(name = "studentId") Long studentId, @PathVariable(name = "courseId") Long courseId, Model model)
+	public RedirectView disassociateCourse(@PathVariable(name = "studentId") Long studentId,
+			@PathVariable(name = "courseId") Long courseId, Model model)
 	{
 		System.out.println("Désassociation étudiant à l'id \"" + studentId + "\" au cours à l'id \"" + courseId + "\"");
 
 		studentCourseService.disassociateCourse(studentId, courseId);
 
 		model.addAttribute("message", "Cours supprimé avec succès");
-		
+
 		RedirectView redirectView = new RedirectView("/coursEtudiant/associateCourse/" + studentId);
 
 		return redirectView;
