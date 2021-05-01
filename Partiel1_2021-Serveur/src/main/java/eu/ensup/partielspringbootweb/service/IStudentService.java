@@ -1,11 +1,9 @@
 package eu.ensup.partielspringbootweb.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import eu.ensup.partielspringbootweb.config.ResourceNotFoundException;
 import eu.ensup.partielspringbootweb.entities.Student;
-
 
 public interface IStudentService
 {
@@ -65,6 +63,4 @@ public interface IStudentService
 	 * @return La liste des étudiants correspondant au prénom et au nom entrés.
 	 */
 	List<Student> searchStudent(String firstName, String lastName);
-
-	
 }
