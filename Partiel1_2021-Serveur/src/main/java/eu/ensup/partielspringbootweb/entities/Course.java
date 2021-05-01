@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Classe métier représentant un cours.
  * 
@@ -29,6 +31,7 @@ public class Course
 	private int numberHours;
 
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JsonIgnoreProperties(value = "courses")
 	@JoinTable(
             name = "student_course",
             joinColumns = {@JoinColumn(name = "course_id")},
@@ -92,7 +95,7 @@ public class Course
 	public String toString()
 	{
 		return "Course [id=" + id + ", themeCourse=" + themeCourse + ", numberHours="
-				+ numberHours + ", students=" + students + "]";
+				+ numberHours + "]";
 	}
 
 }

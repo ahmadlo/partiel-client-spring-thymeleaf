@@ -3,12 +3,15 @@ package com.eu.ensup.partielspring.domaine;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 public class Course
 {
 	private Long id;
 	private String themeCourse;
 	private int numberHours;
 
+	@JsonIgnoreProperties(value = "courses")
 	private Set<Student> students = new HashSet<Student>();
 
 	public Course()
@@ -67,6 +70,6 @@ public class Course
 	public String toString()
 	{
 		return "Course [id=" + id + ", themeCourse=" + themeCourse + ", numberHours="
-				+ numberHours + ", students=" + students + "]";
+				+ numberHours + "]";
 	}
 }

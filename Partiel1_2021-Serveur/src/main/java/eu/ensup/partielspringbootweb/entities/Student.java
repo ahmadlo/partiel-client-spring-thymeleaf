@@ -7,7 +7,11 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * Classe métier représentant un étudiant .
@@ -18,6 +22,12 @@ import javax.persistence.ManyToMany;
 public class Student extends Personne
 {
 	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@JsonIgnoreProperties(value = "students")
+	@JoinTable(
+            name = "student_course",
+            joinColumns = {@JoinColumn(name = "student_id")},
+            inverseJoinColumns = {@JoinColumn(name = "course_id")}
+    )
 	private Set<Course> courses = new HashSet<Course>();
 
 	public Student()

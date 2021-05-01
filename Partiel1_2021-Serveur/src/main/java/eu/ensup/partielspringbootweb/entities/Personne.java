@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.MappedSuperclass;
 
 /**
  * Class Personne qui contient les attributs a heriter dans les classes filles
@@ -17,12 +18,8 @@ import javax.persistence.InheritanceType;
  *
  */
 
-@Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE) //Strategie de creation d'une table unique pour tout enregistrement de type personne et les classes filles 
-@DiscriminatorColumn(name="TYPE_PERSONNE")
-@DiscriminatorValue("PERSONNE")
+@MappedSuperclass
 public class Personne {
-    
 	
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -33,8 +30,6 @@ public class Personne {
     private String address;
     private String phone;
     private Date dob;
-    
-    
 
     public Personne(String firstName, String lastName, String mail, String address, String phone, Date dob) {
    	 super();
@@ -49,8 +44,6 @@ public class Personne {
     public Personne() {
     }
     
-    
-
     public Personne(Long id, String firstName, String lastName, String mail, String address, String phone, Date dob) {
 		super();
 		this.id = id;
@@ -117,6 +110,4 @@ public class Personne {
     public void setDob(Date dob) {
    	 this.dob = dob;
     }
-    
-
 }

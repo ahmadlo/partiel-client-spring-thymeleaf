@@ -45,7 +45,7 @@ public class StudentServiceClient implements IStudentServiceClient {
 		WebTarget webTarget = client.target(url).path("getAll");
 		
 		Response response = webTarget.request("application/json").get();
-		 
+
 		List<Student> listEtudiant = response.readEntity(new GenericType<List<Student>>(){});
 		System.out.println("etudiants : " +listEtudiant);
 		

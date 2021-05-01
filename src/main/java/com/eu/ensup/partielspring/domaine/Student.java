@@ -4,9 +4,12 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 public class Student extends Personne
 {
 
+	@JsonIgnoreProperties(value = "students")
 	private Set<Course> courses;
 
 	public Student(String firstName, String lastName, String mail, String address, String phone, Date dob)
