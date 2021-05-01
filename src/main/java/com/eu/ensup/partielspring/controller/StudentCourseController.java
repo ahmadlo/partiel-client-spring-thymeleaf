@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.eu.ensup.partielspring.domaine.Course;
@@ -76,13 +77,13 @@ public class StudentCourseController
 
 	@GetMapping("/disassociateCourse/{studentId}/{courseId}")
 	public RedirectView disassociateCourse(@PathVariable(name = "studentId") Long studentId,
-			@PathVariable(name = "courseId") Long courseId, Model model)
+			@PathVariable(name = "courseId") Long courseId, RedirectAttributes redirectAttributes)
 	{
-		System.out.println("Désassociation étudiant à l'id \"" + studentId + "\" au cours à l'id \"" + courseId + "\"");
+		System.out.println("Dissociation de l'étudiant à l'id \"" + studentId + "\" au cours à l'id \"" + courseId + "\"");
 
 		studentCourseService.disassociateCourse(studentId, courseId);
 
-		model.addAttribute("message", "Cours supprimé avec succès");
+		redirectAttributes.addFlashAttribute("message", "Cours dissocié");
 
 		RedirectView redirectView = new RedirectView("/coursEtudiant/associateCourse/" + studentId);
 

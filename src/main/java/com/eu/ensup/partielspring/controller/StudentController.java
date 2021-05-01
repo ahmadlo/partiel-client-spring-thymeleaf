@@ -29,8 +29,6 @@ public class StudentController
 	@GetMapping("")
 	public String etudiantHome(Model model)
 	{
-		System.out.println("Etudiant HOme ");
-
 		model.addAttribute("studentList", studentService.getListStudent());
 
 		return "listEtudiant";
@@ -72,18 +70,16 @@ public class StudentController
 		studentService.updateStudent(id, student);
 
 		redirectAttributes.addFlashAttribute("message", "Etudiant modifié avec succès");
-		redirectAttributes.addFlashAttribute("studentList", studentService.getListStudent());
 
 		return new RedirectView("/etudiant");
 	}
 
 	@GetMapping("/deleteStudent/{id}")
-	public RedirectView deleteStudent(@PathVariable(name = "id") Long id, Model model)
+	public RedirectView deleteStudent(@PathVariable(name = "id") Long id, RedirectAttributes redirectAttributes)
 	{
 		studentService.deleteStudent(id);
 
-		//model.addAttribute("studentList", studentService.getListStudent());
-		model.addAttribute("message", "Etudiant supprimé avec succès");
+		redirectAttributes.addFlashAttribute("message", "Etudiant supprimé avec succès");
 
 		return new RedirectView("/etudiant");
 	}
