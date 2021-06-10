@@ -22,7 +22,7 @@ public class ConnexionController
 	@Autowired
 	private IUserService userService;
 
-	@GetMapping("/home")
+	@GetMapping(path = { "/", "/home" })
 	public String home(HttpSession session)
 	{
 		if (session.getAttribute("user") == null)
@@ -31,7 +31,7 @@ public class ConnexionController
 			return "home";
 	}
 
-	@GetMapping(path = { "/", "/login" })
+	@GetMapping(path = { "/login" })
 	public String login()
 	{
 		return "login";
